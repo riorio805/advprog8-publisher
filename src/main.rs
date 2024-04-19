@@ -1,19 +1,10 @@
 use borsh::{BorshDeserialize, BorshSerialize};
-use crosstown_bus::{CrosstownBus, MessageHandler, HandleError};
+use crosstown_bus::{CrosstownBus};
 
 #[derive(Debug, Clone, BorshDeserialize, BorshSerialize)]
 pub struct UserCreatedEventMessage {
     pub user_id: String,
     pub user_name: String
-}
-
-pub struct UserCreatedHandler;
-impl MessageHandler<UserCreatedEventMessage> for UserCreatedHandler {
-    fn handle(&self, message: Box<UserCreatedEventMessage>) ->
-    Result<(), HandleError> {
-        println!("Message received on handler 1: {:?}", message);
-        Ok(())
-    }
 }
 
 fn main() {
